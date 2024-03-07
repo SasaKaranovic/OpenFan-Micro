@@ -1,0 +1,4 @@
+Record=TopLevelDocument|FileName=01_Top.SchDoc|SheetNumber=1
+Record=SheetSymbol|SourceDocument=01_Top.SchDoc|Designator=Fan Drivers|SchDesignator=Fan Drivers|FileName=04_FAN_DRIVER.SchDoc|SheetNumber=4|SymbolType=Normal|RawFileName=04_FAN_DRIVER.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=01_Top.SchDoc|Designator=MCU|SchDesignator=MCU|FileName=03_MCU.SchDoc|SheetNumber=3|SymbolType=Normal|RawFileName=03_MCU.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=01_Top.SchDoc|Designator=Power|SchDesignator=Power|FileName=02_Power.SchDoc|SheetNumber=2|SymbolType=Normal|RawFileName=02_Power.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 

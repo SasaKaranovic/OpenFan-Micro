@@ -1,0 +1,311 @@
+<!doctype html>
+<!--
+* Tabler - Premium and Open Source dashboard template with responsive and high quality UI.
+* @version 1.0.0-beta20
+* @link https://tabler.io
+* Copyright 2018-2023 The Tabler Authors
+* Copyright 2018-2023 codecalm.net Paweł Kuna
+* Licensed under MIT (https://github.com/tabler/tabler/blob/master/LICENSE)
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Open Fan Micro - Karanovic Research</title>
+    <!-- CSS files -->
+    <link href="assets/css/tabler.min.css?1692870487" rel="stylesheet"/>
+    <link href="assets/css/demo.min.css?1692870487" rel="stylesheet"/>
+    <style>
+      @import url('https://rsms.me/inter/inter.css');
+      :root {
+        --tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+      }
+      body {
+        font-feature-settings: "cv03", "cv04", "cv11";
+      }
+    </style>
+  </head>
+  <body >
+    <script src="assets/js/demo-theme.min.js?1692870487"></script>
+    <div class="page">
+        <div id="pageheader">
+      <!-- Navbar -->
+      <header class="navbar navbar-expand-md d-print-none" >
+        <div class="container-xl">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <h1 class="navbar-brand d-none-navbar-horizontal pe-0 pe-md-3">
+            <a href=".">
+              <img src="assets/img/header.png" height="32" alt="OpenFanController" class="navbar-brand-image">
+            </a>
+          </h1>
+          <div class="navbar-nav flex-row order-md-last">
+            <div class="nav-item d-none d-md-flex">
+              <div class="btn-list">
+
+          <div class="d-none d-md-flex">
+              <a href="?theme=dark" class="nav-link px-0 hide-theme-dark" title="Enable dark mode" data-bs-toggle="tooltip"
+           data-bs-placement="bottom">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" /></svg>
+              </a>
+              <a href="?theme=light" class="nav-link px-0 hide-theme-light" title="Enable light mode" data-bs-toggle="tooltip"
+           data-bs-placement="bottom">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" /></svg>
+              </a>
+          </div>
+
+                <a href="https://docs.sasakaranovic.com/openfan_micro/openfan_micro/" class="btn" target="_blank" rel="noreferrer">
+                  <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
+                  OpenFan Home
+                </a>
+                <a href="https://docs.sasakaranovic.com/" class="btn" target="_blank" rel="noreferrer">
+                  <!-- Download SVG icon from http://tabler-icons.io/i/heart -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon text-pink" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" /></svg>
+                  Documentation
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </header>
+
+      <header class="navbar-expand-md">
+        <div class="collapse navbar-collapse" id="navbar-menu">
+          <div class="navbar">
+            <div class="container-xl">
+              <ul class="navbar-nav">
+                <li class="nav-item" id="nav-home">
+                  <a class="nav-link" href="/" >
+                    <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l-2 0l9 -9l9 9l-2 0" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
+                    </span>
+                    <span class="nav-link-title">
+                      Home
+                    </span>
+                  </a>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+
+        </div>
+
+        <div class="page-wrapper" id="content">
+        <!-- Page header -->
+        <div class="page-header d-print-none">
+          <div class="container-xl">
+            <div class="row g-2 align-items-center">
+              <div class="col">
+                <!-- Page pre-title -->
+                <div class="page-pretitle">
+                  KaranovicResearch
+                </div>
+                <h2 class="page-title">
+                    Open Fan Micro
+                </h2>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Page body -->
+        <div class="page-body">
+          <div class="container-xl">
+            <div class="row row-deck row-cards">
+
+              <!-- Dial information -->
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Fan RPM</h3>
+                  </div>
+                  <div class="card-body">
+
+                    <div class="datagrid">
+
+                      <div class="datagrid-item">
+                        <div class="datagrid-title">Fan #1</div>
+                        <div class="datagrid-content"><span id="fan-0-rpm">$CURRENT_RPM$</span> RPM</div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div> <!-- Dial information -->
+
+              </div>
+
+
+            <!-- Dial setting -->
+            <div class="col-12">
+                <div class="row row-cards">
+
+                <div class="col-sm-6 col-lg-8">
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Manually control a fan</h3>
+                  </div>
+                  <div class="card-body">
+
+                    <div class="mb-3">
+                        <label for="fan_value" class="form-label">Fan PWM: $CURRENT_PWM$</label>
+                        <input type="range" class="form-range" min="0" max="100" value="$CURRENT_PWM$" step="1" id="fan_value">
+                    </div>
+
+                    <div class="mb-2">
+                        <button type="button" id="update_fan" class="btn" data-bs-toggle="tooltip">Update FAN value</button>
+                    </div>
+                  </div>
+                </div>
+                </div>
+
+
+                <div class="col-sm-6 col-lg-4">
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Configure device</h3>
+                  </div>
+                  <div class="card-body">
+
+                        <div id="controller-status" class="text-secondary">
+                            <p id="deviceName">Device: $DEVICE_NAME$</p>
+                            <p>MAC: $DEVICE_MAC$</p>
+                            <p>FW: $FW_VERSION$</p>
+                            <p>Fan voltage is <span id="fan_voltage">$FAN_VOLTAGE$</span>V</p>
+                            <p>ACT LED is <span id="led_status">$ACT_LED$</span></p>
+                        </div>
+
+                        <h3 class="card-title">Configure LED</h3>
+                        <div class="btn-list d-flex mb-3">
+                            <a href="#" class="btn btn-success pull-left" id="btn-led-on">Led On</a>
+                            <a href="#" class="btn btn-success me-auto" id="btn-led-off">Led Off</a>
+                        </div>
+
+                        <h3 class="card-title">Configure Fan Voltage</h3>
+                        <div class="btn-list d-flex mb-3">
+                            <a href="#" class="btn btn-danger pull-right" data-bs-toggle="modal" data-bs-target="#changeVoltageTo12V">Fan 12V</a>
+                            <a href="#" class="btn btn-danger pull-right" data-bs-toggle="modal" data-bs-target="#changeVoltageTo5V">Fan 5V</a>
+                        </div>
+
+                  </div>
+                </div>
+                </div>
+
+              </div> <!-- Card row -->
+          </div> <!-- Dial setting -->
+
+
+
+        </div> <!-- Card row -->
+    </div> <!-- Container -->
+</div> <!-- Page body -->
+
+
+        </div>
+        <div id="pagefooter">
+        <footer class="footer footer-transparent d-print-none">
+          <div class="container-xl">
+            <div class="row text-center align-items-center flex-row-reverse">
+              <div class="col-lg-auto ms-lg-auto">
+                <ul class="list-inline list-inline-dots mb-0">
+                  <li class="list-inline-item"><a href="https://docs.sasakaranovic.com/openfan_micro/openfan_micro/" target="_blank" class="link-secondary" rel="noopener">Documentation</a></li>
+                  <li class="list-inline-item"><a href="https://sasakaranovic.com" class="link-secondary">Sasa Karanovic</a></li>
+                  <li class="list-inline-item"><a href="https://shop.sasakaranovic.com" target="_blank" class="link-secondary" rel="noopener">Web Shop</a></li>
+                </ul>
+              </div>
+              <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                <ul class="list-inline list-inline-dots mb-0">
+                  <li class="list-inline-item">
+                    Copyright &copy; 2024
+                    <a href="https://sasakaranovic.com" target="_blank" class="link-secondary">Karanovic Research</a>.
+                    All rights reserved.
+                  </li>
+                  <li class="list-inline-item">v$FW_VERSION$</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
+        </div>
+    </div>
+
+
+<!-- Confirm 5V modal -->
+<div class="modal" id="changeVoltageTo5V" tabindex="-1">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-status bg-danger"></div>
+      <div class="modal-body text-center py-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon mb-2 text-danger icon-lg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M12 9v2m0 4v.01" />
+          <path d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75" />
+        </svg>
+        <h3>Are you sure?</h3>
+        <div class="mb-3">You are about to switch fan voltage to <span class="badge badge-outline text-red">5V</span></div>
+        <div class="mb-3">Selecting the wrong voltage could permanently damage your fan or in worst case scenario cause it to melt or catch fire!</div>
+        <div class="mb-3">Please double check before continuing!</div>
+
+      </div>
+      <div class="modal-footer">
+        <div class="w-100">
+          <div class="row">
+            <div class="col"><a href="#" class="btn w-100" data-bs-dismiss="modal">Cancel</a></div>
+            <div class="col"><a href="#" class="btn btn-danger w-100" data-bs-dismiss="modal" id="confirm_5v_switch">Yes, switch to 5V!</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> <!-- end Confirm 5V modal -->
+
+<!-- Confirm 5V modal -->
+<div class="modal" id="changeVoltageTo12V" tabindex="-1">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-status bg-danger"></div>
+      <div class="modal-body text-center py-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon mb-2 text-danger icon-lg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M12 9v2m0 4v.01" />
+          <path d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75" />
+        </svg>
+        <h3>Are you sure?</h3>
+        <div class="mb-3">You are about to switch fan voltage to <span class="badge badge-outline text-red">12V</span></div>
+        <div class="text-secondary mb-3">Selecting the wrong voltage could permanently damage your fan or in worst case scenario cause it to melt or catch fire!</div>
+        <div class="text-secondary mb-3">Please double check before continuing!</div>
+
+      </div>
+      <div class="modal-footer">
+        <div class="w-100">
+          <div class="row">
+            <div class="col"><a href="#" class="btn w-100" data-bs-dismiss="modal">Cancel</a></div>
+            <div class="col"><a href="#" class="btn btn-danger w-100" data-bs-dismiss="modal" id="confirm_12v_switch">Yes, switch to 12V!</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> <!-- end Confirm 5V modal -->
+
+
+    <!-- Tabler Core -->
+    <script src="assets/js/tabler.min.js?1692870487"></script>
+    <script src="assets/js/demo.min.js?1692870487"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/kr_gui_fan_status.js"></script>
+
+  </body>
+</html>

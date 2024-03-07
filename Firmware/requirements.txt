@@ -1,0 +1,2 @@
+minify-html>=0.15.0
+rjsmin>=1.2.3
