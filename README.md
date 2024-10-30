@@ -32,7 +32,7 @@ Hardware, Firmware and Software build instructions and source files are availabl
 
 ## Where can I find more documentation
 
-Project documentation and quick-start guide is available on [docs.sasakaranovic.com](https://docs.sasakaranovic.com/openfan_micro/openfan_micro/).
+Project documentation and quick-start guide is available on [docs.sasakaranovic.com](https://docs.sasakaranovic.com/openfan_micro/).
 
 <br/><br/>
 
