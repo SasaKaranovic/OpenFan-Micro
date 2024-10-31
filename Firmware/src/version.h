@@ -3,6 +3,6 @@
 
 #define VERSION_MAJOR   2024
 #define VERSION_MINOR   10
-#define VERSION_PATCH   17
+#define VERSION_PATCH   27
 
 #endif

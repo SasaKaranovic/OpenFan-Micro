@@ -88,17 +88,29 @@ void fan_setup(void)
     // Setup Tach
     pinMode(PIN_FAN_TACH, INPUT);
     digitalWrite(PIN_FAN_TACH, HIGH);
+
     // Setup PWM
     ledcSetup(PWM_CH_FAN, FAN_PWM_FREQ, FAN_PWM_RESOLUTION);
     ledcAttachPin(PIN_FAN_PWM, PWM_CH_FAN);
-    u8FanPercent = eepromData.last_percent;
-    set_pwm(u8FanPercent);
+
     // Setup DC-DC
     fan_enable_12V(eepromData.enable_12v);
 }
 
 void fan_tick(void)
 {
+    // Fan start-up boost
+    if (bStartUpBoost)
+    {
+        if(nStartUpBoost_Timeout <= millis())
+        {
+            Serial.println("Turning OFF fan starup boost.");
+            u8FanPercent = eepromData.last_percent;
+            set_pwm(u8FanPercent);
+            bStartUpBoost = false;
+        }
+    }
+
     if (nRPM_Tick <= millis())
     {
         // Start RPM counting and schedule end in FAN_RPM_SAMPLE_PERIOD

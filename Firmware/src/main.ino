@@ -24,6 +24,8 @@ uint32_t fan_rpm = 0;
 uint32_t nFanSave_Tick = 0;
 uint8_t u8FanPercent = 0;
 bool bRPM_counting = false;
+bool bStartUpBoost = true;
+uint32_t nStartUpBoost_Timeout = 0;
 
 void setup()
 {
@@ -110,6 +112,14 @@ void setup()
     // Debug message to signal we are initialized and entering loop
     Serial.println("Ready to go.");
     digitalWrite(PIN_LED_ACT, LOW);
+
+    // Enable fan PWM boost
+    bStartUpBoost = true;
+    nStartUpBoost_Timeout = millis() + FAN_STARTUP_BOOST_TIME;
+    Serial.print("Turning ON fan starup boost for ");
+    Serial.print(FAN_STARTUP_BOOST_TIME);
+    Serial.println(" miliseconds");
+    set_pwm(FAN_STARTUP_BOOST_PWM);
 }
 
 
