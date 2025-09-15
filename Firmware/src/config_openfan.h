@@ -26,6 +26,8 @@
 #define MAX_LEN_MAC_BYTES       6
 #define MAX_LEN_MAC_STRING      16
 #define MAX_LEN_DEVICE_NAME     128
+#define OPENFAN_USE_USB_COMM    1
+#define ENABLE_WIFI             1
 
 // Persistent data storage
 typedef struct eeprom_data

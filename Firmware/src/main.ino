@@ -27,6 +27,18 @@ bool bRPM_counting = false;
 bool bStartUpBoost = true;
 uint32_t nStartUpBoost_Timeout = 0;
 
+#if OPENFAN_USE_USB_COMM
+#include "serial_comm.h"
+uint8_t pTxBuffer[COMM_TX_BUFFER_LEN] = {0};
+uint32_t nTxBufferLen = 1;
+uint8_t pRxBuffer[COMM_RX_ASCII_BUFFER_LEN] = {0};
+uint32_t nRxBufferLen = 0;
+uint8_t pPackage[COMM_RX_HEX_BUFFER_LEN] = {0};
+uint32_t nPackageLen = 0;
+volatile bool bRxStarted = false;
+volatile bool bRxComplete = false;
+#endif
+
 void setup()
 {
     Serial.begin(115200);
@@ -36,7 +48,7 @@ void setup()
 
     eeprom_init();
     eeprom_load();
-
+#if ENABLE_WIFI
     set_device_mdns_name();
     WiFi.setHostname(mdnsName.c_str());
 
@@ -48,7 +60,7 @@ void setup()
     Serial.println(txPower);
 
     delay(1000);
-
+#endif
     // Setup GPIO
     pinMode(PIN_LED_ACT, OUTPUT);
     digitalWrite(PIN_LED_ACT, HIGH);
@@ -70,7 +82,7 @@ void setup()
     }
 
     fan_setup();
-
+#if ENABLE_WIFI
     bool res;
     res = wifiManager.autoConnect("SK-OpenFAN");
 
@@ -108,7 +120,7 @@ void setup()
 
     Serial.print("WiFi IP: ");
     Serial.println(WiFi.localIP());
-
+#endif
     // Debug message to signal we are initialized and entering loop
     Serial.println("Ready to go.");
     digitalWrite(PIN_LED_ACT, LOW);
@@ -120,6 +132,10 @@ void setup()
     Serial.print(FAN_STARTUP_BOOST_TIME);
     Serial.println(" miliseconds");
     set_pwm(FAN_STARTUP_BOOST_PWM);
+
+#if OPENFAN_USE_USB_COMM
+    host_comm_rearm();
+#endif
 }
 
 
@@ -136,6 +152,11 @@ void loop()
 
     // Update RPM
     fan_tick();
+
+#if OPENFAN_USE_USB_COMM
+    // Handle serial comm over USB
+    serial_comm_tick();
+#endif
 }
 
 
