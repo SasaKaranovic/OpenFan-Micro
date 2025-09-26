@@ -17,6 +17,7 @@ String mdnsName = "MyOpenFan";
 char MACString[MAX_LEN_MAC_STRING] = {0};
 uint32_t nLed_Tick = 0;
 uint32_t nRPM_Tick = 0;
+uint32_t nWiFi_Tick = 0;
 volatile uint32_t fan_int_cnt = 0;
 uint32_t fan_millis_start = 0;
 uint32_t fan_millis_end = 0;
@@ -136,8 +137,30 @@ void loop()
 
     // Update RPM
     fan_tick();
+
+    // Check WiFi status
+    wifi_check();
 }
 
+
+void wifi_check(void)
+{
+    wl_status_t WiFiStatus;
+
+    if (nWiFi_Tick <= millis())
+    {
+        WiFiStatus = WiFi.status();
+        if ((WiFiStatus != WL_CONNECTED))
+        {
+            Serial.println("WiFi disconnected... Reconnecting to WiFi...");
+            WiFi.disconnect();
+            delay(100);
+            WiFi.reconnect();
+        }
+
+        nWiFi_Tick = millis() + WIFI_CONN_CHECK_TICK;
+    }
+}
 
 bool get_mac_bytes(char *mac, uint8_t nLen)
 {
