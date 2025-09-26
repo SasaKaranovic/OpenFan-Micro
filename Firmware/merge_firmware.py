@@ -4,6 +4,7 @@ Import("env")  # noqa
 
 import os
 import shutil
+import subprocess
 
 if os.environ.get("ESPHOME_USE_SUBPROCESS") is None:
     try:
@@ -36,10 +37,10 @@ def esp32_create_combined_bin(source, target, env):
     cmd = [
         "--chip",
         chip,
-        "merge_bin",
+        "merge-bin",
         "-o",
         new_file_name,
-        "--flash_size",
+        "--flash-size",
         flash_size,
     ]
 
@@ -59,13 +60,13 @@ def esp32_create_combined_bin(source, target, env):
     if True:
         print(f" - {hex(app_offset)} | {firmware_name}")
         print()
-        print(f"Using esptool.py arguments: {' '.join(cmd)}")
+        print(f"Using esptool arguments: {' '.join(cmd)}")
         print()
 
-    if os.environ.get("ESPHOME_USE_SUBPROCESS") is None:
-        esptool.main(cmd)
-    else:
-        subprocess.run(["esptool.py", *cmd])
+    # if os.environ.get("ESPHOME_USE_SUBPROCESS") is None:
+        # esptool.main(cmd)
+    # else:
+    subprocess.run(["esptool", *cmd])
 
 # pylint: disable=E0602
 env.AddPostAction("$BUILD_DIR/${PROGNAME}.bin", esp32_create_combined_bin)  # noqa
