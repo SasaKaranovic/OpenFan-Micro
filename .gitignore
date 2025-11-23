@@ -243,3 +243,4 @@ upload/*
 # Ignore auto-generated files
 Firmware/src/binary_data.ino
 Firmware/data/
+Firmware/src/version.h
