@@ -152,10 +152,16 @@ void wifi_check(void)
         WiFiStatus = WiFi.status();
         if ((WiFiStatus != WL_CONNECTED))
         {
-            Serial.println("WiFi disconnected... Reconnecting to WiFi...");
-            WiFi.disconnect();
-            delay(100);
-            WiFi.reconnect();
+            Serial.println("WiFi is disconnected... Reconnecting to WiFi...");
+            if (WiFi.disconnect())
+            {
+                Serial.println("Disconnected. Attempting reconnect...");
+                WiFi.reconnect();
+            }
+            else
+            {
+                Serial.println("Failed to disconnect within 1000 ms...");
+            }
         }
 
         nWiFi_Tick = millis() + WIFI_CONN_CHECK_TICK;
