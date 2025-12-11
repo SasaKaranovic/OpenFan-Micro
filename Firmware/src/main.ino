@@ -34,6 +34,7 @@ void setup()
     Serial.setDebugOutput(true);
     delay(1000);
     Serial.println("OpenFAN - Micro");
+    Serial.println("Version: " + String(VERSION_MAJOR) + "-" + String(VERSION_MINOR) + "-" + String(VERSION_PATCH) );
 
     eeprom_init();
     eeprom_load();
