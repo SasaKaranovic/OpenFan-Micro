@@ -56,12 +56,6 @@ String template_const_processor(const String& var)
 
 void WebServer_Setup(void)
 {
-    server.onNotFound([](AsyncWebServerRequest *request) {
-        Serial.print("404:");
-        Serial.println(request->url());
-        request->send(404);
-    });
-
     server_init_handlers();
 
     server.on("/", HTTP_GET, [](AsyncWebServerRequest *request)
