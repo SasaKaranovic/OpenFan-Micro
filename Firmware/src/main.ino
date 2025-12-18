@@ -72,6 +72,7 @@ void setup()
     }
 
     fan_setup();
+    set_pwm(eepromData.last_percent);
 
     bool res;
     res = wifiManager.autoConnect("SK-OpenFAN");

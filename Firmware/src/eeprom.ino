@@ -19,11 +19,10 @@ bool eeprom_load(void)
     }
     else
     {
+        Serial.println("Calibration in EEPROM is invalid. Resetting!");
         eeprom_reset();
         ret = false;
     }
-    Serial.println("Calibration in EEPROM is invalid. Resetting!");
-    set_pwm(eepromData.last_percent);
 
     return ret;
 }
