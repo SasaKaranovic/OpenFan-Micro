@@ -17,6 +17,7 @@ String mdnsName = "MyOpenFan";
 char MACString[MAX_LEN_MAC_STRING] = {0};
 uint32_t nLed_Tick = 0;
 uint32_t nRPM_Tick = 0;
+uint32_t nWiFi_Tick = 0;
 volatile uint32_t fan_int_cnt = 0;
 uint32_t fan_millis_start = 0;
 uint32_t fan_millis_end = 0;
@@ -33,6 +34,7 @@ void setup()
     Serial.setDebugOutput(true);
     delay(1000);
     Serial.println("OpenFAN - Micro");
+    Serial.println("Version: " + String(VERSION_MAJOR) + "-" + String(VERSION_MINOR) + "-" + String(VERSION_PATCH) );
 
     eeprom_init();
     eeprom_load();
@@ -70,6 +72,7 @@ void setup()
     }
 
     fan_setup();
+    set_pwm(eepromData.last_percent);
 
     bool res;
     res = wifiManager.autoConnect("SK-OpenFAN");
@@ -136,8 +139,37 @@ void loop()
 
     // Update RPM
     fan_tick();
+
+    // Check WiFi status
+    wifi_check();
 }
 
+
+void wifi_check(void)
+{
+    wl_status_t WiFiStatus;
+
+    if (nWiFi_Tick <= millis())
+    {
+        WiFiStatus = WiFi.status();
+        if ((WiFiStatus != WL_CONNECTED))
+        {
+            Serial.println("WiFi is disconnected... Reconnecting to WiFi...");
+            if (WiFi.disconnect())
+            {
+                Serial.println("Disconnected. Attempting reconnect...");
+            }
+            else
+            {
+                Serial.println("Failed to disconnect within 1000 ms...");
+            }
+
+            WiFi.reconnect();
+        }
+
+        nWiFi_Tick = millis() + WIFI_CONN_CHECK_TICK;
+    }
+}
 
 bool get_mac_bytes(char *mac, uint8_t nLen)
 {
