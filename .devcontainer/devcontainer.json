@@ -1,0 +1,9 @@
+{
+    "build": {
+        "context": ".",
+        "dockerfile": "Dockerfile"
+    },
+    "features": {},
+    "name": "Firmware",
+    "workspaceFolder": "/workspaces/OpenFan-Micro/Firmware"
+}
