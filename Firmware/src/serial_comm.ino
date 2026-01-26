@@ -54,7 +54,7 @@ void host_comm_process_request(comm_cmd_t cmd, uint8_t *pData, uint32_t nDataLen
 
         case CMD_FAN_GET_RPM:
             rpm=0;
-            if (pData[0])
+            if (pData[0] == 0)
             {
                 rpm = (uint16_t)fan_rpm;
             }
