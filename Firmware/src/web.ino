@@ -88,7 +88,7 @@ void WebServer_Setup(void)
             }
             else
             {
-                memset(eepromData.deviceName, NAME_MAX_LEN, 0);
+                memset(eepromData.deviceName, 0, NAME_MAX_LEN);
                 remove_illegal_chars_and_copy(eepromData.deviceName, devName.c_str(), len);
                 eeprom_save();
 
