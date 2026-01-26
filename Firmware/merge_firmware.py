@@ -11,8 +11,10 @@ if os.environ.get("ESPHOME_USE_SUBPROCESS") is None:
         import esptool
     except ImportError:
         env.Execute("$PYTHONEXE -m pip install esptool")
+        import esptool
 else:
     import subprocess
+
 from SCons.Script import ARGUMENTS
 
 # Copy over the default sdkconfig.

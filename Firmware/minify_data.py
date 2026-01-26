@@ -1,7 +1,19 @@
+Import("env")
+
 import os
 import shutil
-import minify_html
-from rjsmin import jsmin
+
+try:
+    import minify_html
+except ImportError:
+    env.Execute("$PYTHONEXE -m pip install 'minify-html>=0.15.0'")
+    import minify_html
+
+try:
+    from rjsmin import jsmin
+except ImportError:
+    env.Execute("$PYTHONEXE -m pip install 'rjsmin>=1.2.3'")
+    from rjsmin import jsmin
 
 class Minify:
     def __init__(self, work_dir, raw_directory, min_directory):
