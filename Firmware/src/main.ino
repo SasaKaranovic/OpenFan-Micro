@@ -157,8 +157,10 @@ void loop()
     // Update RPM
     fan_tick();
 
+#if ENABLE_WIFI
     // Check WiFi status
     wifi_check();
+#endif
 
 #if OPENFAN_USE_USB_COMM
     // Handle serial comm over USB

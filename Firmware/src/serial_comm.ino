@@ -25,6 +25,7 @@ static void serial_comm_receive(void)
 void host_comm_process_request(comm_cmd_t cmd, uint8_t *pData, uint32_t nDataLen)
 {
     uint16_t rpm = 0;
+    uint8_t percent = 0;
     pTxBuffer[0] = COMM_RESPONSE_CHARACTER;
     nTxBufferLen = 1;
     response_add_byte(cmd);
@@ -66,7 +67,8 @@ void host_comm_process_request(comm_cmd_t cmd, uint8_t *pData, uint32_t nDataLen
         case CMD_FAN_SET_PWM:
             if (pData[0] == 0)
             {
-                set_pwm(pData[1]);
+                percent = (pData[1] * 100.0 / 255.0);
+                set_pwm(percent);
             }
             response_add_byte(pData[0]);
             response_add_chr(':');
@@ -74,16 +76,9 @@ void host_comm_process_request(comm_cmd_t cmd, uint8_t *pData, uint32_t nDataLen
             break;
 
         case CMD_FAN_SET_ALL_PWM:
-            set_pwm(pData[1]);
+            percent = (pData[1] * 100.0 / 255.0);
+            set_pwm(percent);
             response_add_byte(pData[0]);
-            break;
-
-        case CMD_FAN_SET_RPM:
-            // FIXME: This is unsupported at the moment
-            response_add_byte(pData[0]);
-            response_add_chr(':');
-            response_add_byte(pData[1]);
-            response_add_byte(pData[2]);
             break;
 
         case CMD_HW_INFO:
