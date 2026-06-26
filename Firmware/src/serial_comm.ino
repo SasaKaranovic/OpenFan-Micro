@@ -88,8 +88,8 @@ void host_comm_process_request(comm_cmd_t cmd, uint8_t *pData, uint32_t nDataLen
 
         case CMD_HW_INFO:
             response_add_str("\r\n");
-            response_add_str("HW_REV:01\r\n");
-            response_add_str("MCU:OpenFAN_Micro_ESP32\r\n");
+            response_add_str("HW_REV:04\r\n");
+            response_add_str("MCU:OpenFAN_Micro_ESP32C3\r\n");
             response_add_str("USB:NATIVE\r\n");
             response_add_str("FAN_CHANNELS_TOTAL:1\r\n");
             response_add_str("FAN_CHANNELS_ARCH:1\r\n");
@@ -97,7 +97,7 @@ void host_comm_process_request(comm_cmd_t cmd, uint8_t *pData, uint32_t nDataLen
             break;
 
         case CMD_FW_INFO:
-            response_add_str("FW_REV:OpenFAN_Micro_02\r\n");
+            response_add_str("FW_REV:02\r\n");
             response_add_str("PROTOCOL_VERSION:02\r\n");
             break;
 
