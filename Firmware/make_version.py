@@ -7,9 +7,9 @@ def write_version_to_file(filepath, contents):
 
 def make_version_string():
     now = datetime.datetime.now()
-    year = now.strftime('%Y')
-    month = now.strftime('%m')
-    day = now.strftime('%d')
+    year = now.year
+    month = now.month
+    day = now.day
 
     version_header = \
 f"""#ifndef __OPENFAN_MICRO_FW_VERSION_H_INC__
