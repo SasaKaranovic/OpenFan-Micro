@@ -39,23 +39,11 @@ void host_comm_process_request(comm_cmd_t cmd, uint8_t *pData, uint32_t nDataLen
             response_add_chr(':');
             response_add_u16((uint16_t)fan_rpm);
             response_add_chr(';');
-            // Fake remaining data
-            for(uint8_t i=1; i<10; i++)
-            {
-                rpm=0;
-                response_add_byte(i);
-                response_add_chr(':');
-                response_add_u16(0);
-                if(i<10)
-                {
-                    response_add_chr(';');
-                }
-            }
             break;
 
         case CMD_FAN_GET_RPM:
             rpm=0;
-            if (pData[0])
+            if (pData[0]==0)
             {
                 rpm = (uint16_t)fan_rpm;
             }
@@ -76,7 +64,7 @@ void host_comm_process_request(comm_cmd_t cmd, uint8_t *pData, uint32_t nDataLen
             break;
 
         case CMD_FAN_SET_ALL_PWM:
-            percent = (pData[1] * 100.0 / 255.0);
+            percent = (pData[0] * 100.0 / 255.0);
             set_pwm(percent);
             response_add_byte(pData[0]);
             break;
