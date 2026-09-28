@@ -12,12 +12,12 @@ def make_version_string():
     day = now.strftime('%d')
 
     version_header = \
-f"""#ifndef __OPENFAN_MICRO_FW_VERSION_H_INC__
-#define __OPENFAN_MICRO_FW_VERSION_H_INC__
+f"""#ifndef __OPENFAN_MICRO_PD_FW_VERSION_H_INC__
+#define __OPENFAN_MICRO_PD_FW_VERSION_H_INC__
 
-#define VERSION_MAJOR   {year}
-#define VERSION_MINOR   {month}
-#define VERSION_PATCH   {day}
+#define VERSION_MAJOR   "{year}"
+#define VERSION_MINOR   "{month}"
+#define VERSION_PATCH   "{day}"
 
 #endif
 """

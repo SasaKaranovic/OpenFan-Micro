@@ -26,6 +26,10 @@ $(function() {
         rename_device();
     } );
 
+    $(".fan-preset").on("click", function() {
+        fan_preset(this);
+    });
+
     // Periodic fan RPM update
     const interval = setInterval(function() {
        gui_update_fan_status();
@@ -61,6 +65,13 @@ function update_fan(fan, value)
         console.log(e);
       });
 
+}
+function fan_preset(e)
+{
+    var percent = $(e).data("fan-value");
+    $("#fan_value").val(percent);
+    update_value_slider();
+    update_fan(0, percent);
 }
 
 function rename_device()
