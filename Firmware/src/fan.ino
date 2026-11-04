@@ -41,7 +41,12 @@ void set_pwm(uint8_t percent)
     uint8_t pwm_value;
     pwm_value = ( ( (float)percent*(float)255) / (float)100);
     u8FanPercent = percent;
+
+#if ESP_ARDUINO_VERSION_MAJOR >= 3
+    ledcWrite(PIN_FAN_PWM, pwm_value);
+#else
     ledcWrite(PWM_CH_FAN, pwm_value);
+#endif
 
     Serial.print("Setting fan PWM to ");
     Serial.print(percent);
@@ -90,8 +95,12 @@ void fan_setup(void)
     digitalWrite(PIN_FAN_TACH, HIGH);
 
     // Setup PWM
+#if ESP_ARDUINO_VERSION_MAJOR >= 3
+    ledcAttachChannel(PIN_FAN_PWM, FAN_PWM_FREQ, FAN_PWM_RESOLUTION, PWM_CH_FAN);
+#else
     ledcSetup(PWM_CH_FAN, FAN_PWM_FREQ, FAN_PWM_RESOLUTION);
     ledcAttachPin(PIN_FAN_PWM, PWM_CH_FAN);
+#endif
 
     // Setup DC-DC
     fan_enable_12V(eepromData.enable_12v);
