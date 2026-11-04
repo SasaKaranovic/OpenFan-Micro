@@ -78,7 +78,8 @@ jobs:
       startsWith(github.ref, 'refs/heads/stable') ||
       startsWith(github.ref, 'refs/heads/preview') ||
       startsWith(github.ref, 'refs/heads/test')
-    runs-on: ubuntu-24.04
+    runs-on: [self-hosted, docker-runner]
+    # runs-on: ubuntu-24.04
     steps:
       # Each artifact goes into its own folder: artifacts/fw-standard/merged-firmware.bin
       - uses: actions/download-artifact@v8
