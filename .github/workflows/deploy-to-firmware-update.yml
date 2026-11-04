@@ -78,14 +78,14 @@ jobs:
       startsWith(github.ref, 'refs/heads/stable') ||
       startsWith(github.ref, 'refs/heads/preview') ||
       startsWith(github.ref, 'refs/heads/test')
-    runs-on: [self-hosted, docker-runner]
-    # runs-on: ubuntu-24.04
+    runs-on: ubuntu-24.04
     steps:
-      # Each artifact goes into its own folder: artifacts/fw-standard/merged-firmware.bin
+      # Download each variant by name into its own folder, so the path is always
+      # artifacts/fw-<variant>/merged-firmware.bin (one step per variant).
       - uses: actions/download-artifact@v8
         with:
-          path: artifacts
-          pattern: fw-*
+          name: fw-standard
+          path: artifacts/fw-standard
 
       - name: Show downloaded files
         run: find artifacts -type f -ls
