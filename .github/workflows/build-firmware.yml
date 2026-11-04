@@ -1,0 +1,64 @@
+# Example: PlatformIO project with two firmware variants.
+# Copy to .github/workflows/firmware.yml in the product repo, then adjust:
+#   - the matrix (PlatformIO environment -> firmware variant from firmware.yml)
+#   - CHIP, the product key, and the concurrency group name
+name: Firmware
+
+on:
+  push:
+    branches: [main, dev]   # main -> preview, other branches -> dev (hidden unless ?dev)
+    tags: ["v*"]            # tags -> stable
+  workflow_dispatch:
+
+# One publish at a time per product, across all workflows and branches in this repo.
+concurrency:
+  group: firmware-publish-openfan-micro
+  cancel-in-progress: false
+
+env:
+  CHIP: esp32c3
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        include:
+          - env: standard
+            variant: standard
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Install PlatformIO and esptool
+        run: pip install platformio esptool
+
+      - name: Build
+        run: pio run -e ${{ matrix.env }}
+
+      - uses: actions/upload-artifact@v7
+        with:
+          if-no-files-found: error
+          name: fw-${{ matrix.variant }}
+          path: .pio/build/${{ matrix.variant }}/merged-firmware.bin
+
+  publish:
+    needs: build
+    runs-on: ubuntu-24.04
+    steps:
+      # Downloads every artifact into its own folder: fw-standard/merged-firmware.bin, fw-unraid/merged-firmware.bin
+      - uses: actions/download-artifact@v8
+
+      - uses: SasaKaranovic/docs-esp-firmware-publish@v1
+        with:
+          product: openfan-micro
+          builds: |
+            standard=fw-standard/merged-firmware.bin
+            unraid=fw-unraid/merged-firmware.bin
+          host: ${{ secrets.FIRMWARE_DEPLOY_HOST }}
+          ssh-key: ${{ secrets.FIRMWARE_DEPLOY_KEY }}
+          known-hosts: ${{ secrets.FIRMWARE_KNOWN_HOSTS }}
